@@ -3,7 +3,7 @@ import { removeTodo } from "../features/todo/todoSlice";
 
 const Todos = () => {
   const todos = useSelector((state) => state.todos);
-
+const dispatch = useDispatch()
   console.log(todos);
   return (
     <div>
@@ -12,7 +12,7 @@ const Todos = () => {
       {todos.map((todo)=> (
         <div key={todo.id} className="flex gap-20 my-5 justify-between items-center">
         <li className="list-none text-xl">{todo.text}</li>
-        <button className="bg-red-400 px-3 rounded-md">X</button>
+        <button onClick={()=>dispatch(removeTodo(todo.id))} className="bg-red-400 px-3 rounded-md">X</button>
         </div>
       ))}
     </div>
